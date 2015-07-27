@@ -134,9 +134,6 @@ console.log("Running Apos Bot!");
         if (player1.size * player1.size * ratio < player2.size * player2.size) {
             return true;
         }
-        if(player1.size < player2.size) {
-            player1.size = player2.size;
-        }
         return false;
     }
 
