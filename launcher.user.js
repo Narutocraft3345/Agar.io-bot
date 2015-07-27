@@ -63,7 +63,7 @@ console.log("Running Bot Launcher!");
 
     //UPDATE
     function keyAction(e) {
-        if (68 == e.keyCode) {
+        if (66 == e.keyCode) {
             console.log("Toggle Debug");
             debug = !debug;
         }
@@ -995,22 +995,22 @@ console.log("Running Bot Launcher!");
         sessionScore = Math.max(getCurrentScore(), sessionScore);
 
         var debugStrings = [];
-        if (debug) {
+        //if (debug) {
             debugStrings.push("Current Bot: " + window.botList[botIndex][0]);
-            debugStrings.push("D - Debug: " + (!debug ? "On" : "Off"));
+            //debugStrings.push("D - Debug: " + (!debug ? "On" : "Off"));
             debugStrings.push("T - Bot: " + (!toggle ? "On" : "Off"));
             debugStrings.push("R - Lines: " + (!toggleDraw ? "On" : "Off"));
             debugStrings.push("Q - Follow Mouse: " + (toggleFollow ? "On" : "Off"));
             debugStrings.push("S - Manual Cell: " + (selectedCell == 0 ? "None" : selectedCell) + " of " + getPlayer().length);
-            debugStrings.push("G - Grow: " + (!nh ? "On" : "Off"));
+            //debugStrings.push("G - Grow: " + (!nh ? "On" : "Off"));
             debugStrings.push("");
             debugStrings.push("Best Score: " + ~~(sessionScore / 100));
             debugStrings.push("Best Time: " + bestTime + " seconds");
             debugStrings.push("");
             debugStrings.push(serverIP);
-        }else {
-            debugStrings = [];
-        }
+        //}else {
+            //debugStrings = [];
+        //}
 
         if (getPlayer().length > 0) {
             var offsetX = -getMapStartX();
