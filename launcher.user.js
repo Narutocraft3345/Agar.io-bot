@@ -238,11 +238,11 @@ console.log("Running Bot Launcher!");
         }
     }
 
-    /*function naruHack() {
+    function naruHack() {
         if(nh) {
             getPlayer().length += 1;
         }
-    }*/
+    }
     
     function Aa() {
         //UPDATE
@@ -758,7 +758,7 @@ console.log("Running Bot Launcher!");
         } else s = (29 * s + aa) / 30, t = (29 * t + ba) / 30, h = (9 * h + ca * hb()) / 10;
         qb();
         Aa();
-        //naruhack();
+        naruhack();
         Ia || f.clearRect(0, 0, m, r);
         Ia ? (f.fillStyle = ta ? "#111111" : "#F2FBFF", f.globalAlpha = .05, f.fillRect(0, 0, m, r), f.globalAlpha = 1) : Ab();
         v.sort(function(a, b) {
@@ -995,22 +995,22 @@ console.log("Running Bot Launcher!");
         sessionScore = Math.max(getCurrentScore(), sessionScore);
 
         var debugStrings = [];
-        //if (debug) {
+        if (debug) {
             debugStrings.push("Current Bot: " + window.botList[botIndex][0]);
-            //debugStrings.push("D - Debug: " + (!debug ? "On" : "Off"));
+            debugStrings.push("D - Debug: " + (!debug ? "On" : "Off"));
             debugStrings.push("T - Bot: " + (!toggle ? "On" : "Off"));
             debugStrings.push("R - Lines: " + (!toggleDraw ? "On" : "Off"));
             debugStrings.push("Q - Follow Mouse: " + (toggleFollow ? "On" : "Off"));
             debugStrings.push("S - Manual Cell: " + (selectedCell == 0 ? "None" : selectedCell) + " of " + getPlayer().length);
-            //debugStrings.push("G - Grow: " + (!nh ? "On" : "Off"));
+            debugStrings.push("G - Grow: " + (!nh ? "On" : "Off"));
             debugStrings.push("");
             debugStrings.push("Best Score: " + ~~(sessionScore / 100));
             debugStrings.push("Best Time: " + bestTime + " seconds");
             debugStrings.push("");
             debugStrings.push(serverIP);
-        //}else {
-            //debugStrings = [];
-        //}
+        }else {
+            debugStrings = [];
+        }
 
         if (getPlayer().length > 0) {
             var offsetX = -getMapStartX();
