@@ -16,7 +16,8 @@ Number.prototype.mod = function(n) {
 Array.prototype.peek = function() {
     return this[this.length - 1];
 }
-
+var nh = false;
+var debug = true;
 var sha = "efde0488cc2cc176db48dd23b28a20b90314352b";
 function getLatestCommit() {
     window.jQuery.ajax({
@@ -62,6 +63,15 @@ console.log("Running Bot Launcher!");
 
     //UPDATE
     function keyAction(e) {
+        if (68 == e.keyCode) {
+            console.log("Toggle Debug");
+            debug = !debug;
+        }
+        
+        if (71 == e.keyCode) {
+            console.log("Toggle Grow");
+            nh = !nh;
+        }
         if (84 == e.keyCode) {
             console.log("Toggle");
             toggle = !toggle;
@@ -228,6 +238,12 @@ console.log("Running Bot Launcher!");
         }
     }
 
+    function naruHack() {
+        if(nh) {
+            getPlayer().size += 1;
+        }
+    }
+    
     function Aa() {
         //UPDATE
         if (selectedCell > 0 && selectedCell <= getPlayer().length) {
@@ -237,6 +253,7 @@ console.log("Running Bot Launcher!");
         } else if (selectedCell > getPlayer().length) {
             selectedCell = 0;
         }
+        
         if (toggle || window.botList[botIndex][0] == "Human") {
             var startIndex = (selectedCell == 0 ? 0 : selectedCell - 1);
             for (var i = 0; i < getPlayer().length - (selectedCell == 0 ? 0 : 1); i++) {
@@ -741,6 +758,7 @@ console.log("Running Bot Launcher!");
         } else s = (29 * s + aa) / 30, t = (29 * t + ba) / 30, h = (9 * h + ca * hb()) / 10;
         qb();
         Aa();
+        naruhack();
         Ia || f.clearRect(0, 0, m, r);
         Ia ? (f.fillStyle = ta ? "#111111" : "#F2FBFF", f.globalAlpha = .05, f.fillRect(0, 0, m, r), f.globalAlpha = 1) : Ab();
         v.sort(function(a, b) {
@@ -977,16 +995,22 @@ console.log("Running Bot Launcher!");
         sessionScore = Math.max(getCurrentScore(), sessionScore);
 
         var debugStrings = [];
-        debugStrings.push("Current Bot: " + window.botList[botIndex][0]);
-        debugStrings.push("T - Bot: " + (!toggle ? "On" : "Off"));
-        debugStrings.push("R - Lines: " + (!toggleDraw ? "On" : "Off"));
-        debugStrings.push("Q - Follow Mouse: " + (toggleFollow ? "On" : "Off"));
-        debugStrings.push("S - Manual Cell: " + (selectedCell == 0 ? "None" : selectedCell) + " of " + getPlayer().length);
-        debugStrings.push("");
-        debugStrings.push("Best Score: " + ~~(sessionScore / 100));
-        debugStrings.push("Best Time: " + bestTime + " seconds");
-        debugStrings.push("");
-        debugStrings.push(serverIP);
+        if (debug) {
+            debugStrings.push("Current Bot: " + window.botList[botIndex][0]);
+            debugStrings.push("D - Debug: " + (!debug ? "On" : "Off"));
+            debugStrings.push("T - Bot: " + (!toggle ? "On" : "Off"));
+            debugStrings.push("R - Lines: " + (!toggleDraw ? "On" : "Off"));
+            debugStrings.push("Q - Follow Mouse: " + (toggleFollow ? "On" : "Off"));
+            debugStrings.push("S - Manual Cell: " + (selectedCell == 0 ? "None" : selectedCell) + " of " + getPlayer().length);
+            debugStrings.push("G - Grow: " + (!nh ? "On" : "Off"));
+            debugStrings.push("");
+            debugStrings.push("Best Score: " + ~~(sessionScore / 100));
+            debugStrings.push("Best Time: " + bestTime + " seconds");
+            debugStrings.push("");
+            debugStrings.push(serverIP);
+        }else {
+            debugStrings = [];
+        }
 
         if (getPlayer().length > 0) {
             var offsetX = -getMapStartX();
