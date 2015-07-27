@@ -758,7 +758,7 @@ console.log("Running Bot Launcher!");
         } else s = (29 * s + aa) / 30, t = (29 * t + ba) / 30, h = (9 * h + ca * hb()) / 10;
         qb();
         Aa();
-        naruhack();
+        //naruhack();
         Ia || f.clearRect(0, 0, m, r);
         Ia ? (f.fillStyle = ta ? "#111111" : "#F2FBFF", f.globalAlpha = .05, f.fillRect(0, 0, m, r), f.globalAlpha = 1) : Ab();
         v.sort(function(a, b) {
